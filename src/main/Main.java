@@ -3,8 +3,9 @@ package main;
 public class Main {
 
     public static void main(String[] args) {
+        // Visualisation of the Cinema
         System.out.println("Cinema:");
-        System.out.println(" 1 2 3 4 5 6 7 8");
+        System.out.println("  1 2 3 4 5 6 7 8");
         System.out.println("1 S S S S S S S S");
         System.out.println("2 S S S S S S S S");
         System.out.println("3 S S S S S S S S");
