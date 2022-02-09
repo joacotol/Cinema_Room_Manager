@@ -35,9 +35,9 @@ public class Main {
 
         // Part Two: Total Income Made
         final int totalSeats = rows * numberOfSeats;
-        int incomeFrontHalf = 0;
-        int incomeBackHalf = 0;
-        int income = 0;
+        int incomeFrontHalf;
+        int incomeBackHalf;
+        int income;
         final int frontPrice = 10;
         final int backPrice = 8;
 
@@ -56,8 +56,8 @@ public class Main {
             }
         }
 
-        System.out.println("Total income: ");
-        System.out.print("$" + income);
+        System.out.print("Total income: ");
+        System.out.println("$" + income);
 
 
     }
