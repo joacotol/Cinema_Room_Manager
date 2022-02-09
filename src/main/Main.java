@@ -6,12 +6,14 @@ public class Main {
     public static void main(String[] args) {
         Scanner userInput = new Scanner(System.in);
 
-        //
+        // Part One: Cinema Visualization
         System.out.print("Enter number of rows: ");
         int rows = userInput.nextInt();
         System.out.print("Enter the number of seats per row: ");
         int numberOfSeats = userInput.nextInt();
         System.out.println("");
+
+
         int rowCounter = 1;
 
         System.out.print("  ");
@@ -30,6 +32,33 @@ public class Main {
             System.out.println("");
             rowCounter++;
         }
+
+        // Part Two: Total Income Made
+        final int totalSeats = rows * numberOfSeats;
+        int incomeFrontHalf = 0;
+        int incomeBackHalf = 0;
+        int income = 0;
+        final int frontPrice = 10;
+        final int backPrice = 8;
+
+        if (totalSeats < 60) {
+            income = totalSeats * 10;
+        } else {
+
+            if (rows % 2 == 0) {
+                incomeFrontHalf = ((rows / 2) * numberOfSeats) * frontPrice;
+                incomeBackHalf = ((rows / 2) * numberOfSeats) * backPrice;
+                income = incomeFrontHalf + incomeBackHalf;
+            } else {
+                incomeFrontHalf = ((rows / 2) * numberOfSeats) * frontPrice;
+                incomeBackHalf = ((rows / 2 + 1) * numberOfSeats) * backPrice;
+                income = incomeFrontHalf + incomeBackHalf;
+            }
+        }
+
+        System.out.println("Total income: ");
+        System.out.print("$" + income);
+
 
     }
 }
