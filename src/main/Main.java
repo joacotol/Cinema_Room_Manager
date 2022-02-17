@@ -11,7 +11,7 @@ public class Main {
         int rows = userInput.nextInt();
         System.out.print("Enter the number of seats per row: ");
         int numberOfSeats = userInput.nextInt();
-        System.out.println("");
+        System.out.println();
 
 
         int rowCounter = 1;
@@ -22,7 +22,7 @@ public class Main {
         for(int column = 1; column <= numberOfSeats; column++) {
             System.out.print(column + " ");
         }
-        System.out.println("");
+        System.out.println();
         // Loops until the number of rows are printed
         for(int row = 0; row < rows; row++) {
             System.out.print(rowCounter + " ");
@@ -30,7 +30,7 @@ public class Main {
             for(int seat = 1; seat <= numberOfSeats; seat++) {
                 System.out.print("S ");
             }
-            System.out.println("");
+            System.out.println();
             rowCounter++;
         }
         System.out.println();
@@ -54,6 +54,7 @@ public class Main {
 
         if (totalSeats < 60) {
             income = totalSeats * 10;
+            System.out.println("Ticket price: $" + frontPrice);
         } else {
 
             // Runs if total number of rows are even
@@ -99,6 +100,7 @@ public class Main {
         }
         System.out.println();
         rowCounter = 1;
+
         for (int newRow = 0; newRow < seatingArray.length; newRow++) {
             System.out.print(rowCounter + " ");
             for (int singleSeat = 0; singleSeat < seatingArray[newRow].length; singleSeat++) {
