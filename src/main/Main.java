@@ -14,25 +14,7 @@ public class Main {
 
         String[][] seatingArray = new String[rows][numberOfSeats];
 
-        int rowCounter = 1;
-
-        System.out.println("Cinema:");
-        System.out.print("  ");
-        // Will Loop to print the number of columns
-        for(int column = 1; column <= numberOfSeats; column++) {
-            System.out.print(column + " ");
-        }
-        System.out.println();
-        // Loops until the number of rows are printed
-        for(int row = 0; row < rows; row++) {
-            System.out.print(rowCounter + " ");
-            // Loops until the number of seats are printed
-            for(int seat = 1; seat <= numberOfSeats; seat++) {
-                System.out.print("S ");
-            }
-            System.out.println();
-            rowCounter++;
-        }
+        
         System.out.println();
 
         // This is for when the user chooses the seat in the cinema
@@ -43,52 +25,7 @@ public class Main {
         System.out.println();
 
 
-        // Part Two: Total Income Made
-        final int totalSeats = rows * numberOfSeats;
-        int incomeFrontHalf;
-        int frontHalfSeats;
-        int incomeBackHalf;
-        int income;
-        final int frontPrice = 10;
-        final int backPrice = 8;
 
-        if (totalSeats < 60) {
-            income = totalSeats * 10;
-            System.out.println("Ticket price: $" + frontPrice);
-        } else {
-
-            // Runs if total number of rows are even
-            if (rows % 2 == 0) {
-                incomeFrontHalf = ((rows / 2) * numberOfSeats) * frontPrice;
-                frontHalfSeats = rows / 2;
-                incomeBackHalf = ((rows / 2) * numberOfSeats) * backPrice;
-                income = incomeFrontHalf + incomeBackHalf;
-
-                if (chosenRow <= frontHalfSeats) {
-                    System.out.println("Ticket price: $" + frontPrice);
-                } else {
-                    System.out.println("Ticket price: $" + backPrice);
-                }
-            } else {
-                incomeFrontHalf = ((rows / 2) * numberOfSeats) * frontPrice;
-                frontHalfSeats = rows / 2;
-                incomeBackHalf = ((rows / 2 + 1) * numberOfSeats) * backPrice;
-                income = incomeFrontHalf + incomeBackHalf;
-
-                if (chosenRow <= frontHalfSeats) {
-                    System.out.println("Ticket price: $" + frontPrice);
-                } else {
-                    System.out.println("Ticket price: $" + backPrice);
-                }
-            }
-        }
-
-        System.out.print("Total income: ");
-        System.out.println("$" + income);
-        System.out.println();
-
-
-        // Part Three: Get Ticket Price and Shows the Picked Seat
 
     }
 
@@ -114,6 +51,30 @@ public class Main {
             }
             System.out.println();
             rowCounter++;
+        }
+    }
+
+    public static void getTicketPrice(String[][] seatingArray, int rows, int numberOfSeats) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter a row number:");
+        int chosenRow = scanner.nextInt();
+        System.out.println("Enter a seat number in that row:");
+        int chosenSeat = scanner.nextInt();
+
+        int totalSeats = rows * numberOfSeats;
+        // This outputs the price of an individual ticket based on its position
+        // If the total seats in the cinema is less than 60 then the price for all tickets is 10$
+        // Else if the chosen seat is located in front half of the cinema the ticket price is 10$
+        // Else the price of a ticket is 8$ if the chosen seat is in the back of the cinema
+        System.out.println("Ticket price: $" + (totalSeats <= 60 ? 10 : chosenRow <= rows / 2 ? 10 : 8));
+
+        for (int i = 0; i < seatingArray.length; i++) {
+            for (int j = 0; j < seatingArray[i].length; j++) {
+                if (i == chosenRow - 1 && j == chosenSeat -1) {
+                    seatingArray[i][j] = "B";
+                }
+            }
         }
     }
 }
