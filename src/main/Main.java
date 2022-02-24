@@ -11,8 +11,8 @@ public class Main {
         int rows = userInput.nextInt();
         System.out.print("Enter the number of seats per row: ");
         int numberOfSeats = userInput.nextInt();
-        System.out.println();
 
+        String[][] seatingArray = new String[rows][numberOfSeats];
 
         int rowCounter = 1;
 
@@ -90,32 +90,30 @@ public class Main {
 
         // Part Three: Get Ticket Price and Shows the Picked Seat
 
-        String[][] seatingArray = new String[rows][numberOfSeats];
+    }
+
+    public static void showCinema(String[][] seatingArray, int numberOfSeats) {
+        int rowCounter = 1;
 
         System.out.println("Cinema:");
         // Redraws the seating map
         System.out.print("  ");
-        for (int col = 1; col <= numberOfSeats; col++) {
-            System.out.print(col + " ");
+        for (int column = 1; column <= numberOfSeats; column++) {
+            System.out.print(column + " ");
         }
         System.out.println();
-        rowCounter = 1;
 
-        for (int newRow = 0; newRow < seatingArray.length; newRow++) {
+        for (int row = 0; row < seatingArray.length; row++) {
             System.out.print(rowCounter + " ");
-            for (int singleSeat = 0; singleSeat < seatingArray[newRow].length; singleSeat++) {
-                if (newRow + 1 == chosenRow && singleSeat + 1 == chosenSeat) {
+            for (int singleSeat = 0; singleSeat < seatingArray[row].length; singleSeat++) {
+                if (seatingArray[row][singleSeat] == null || !(seatingArray[row][singleSeat].equals("B"))) {
                     // This targets the seat coordinates the user chose to sit in
-                    seatingArray[newRow][singleSeat] = "B";
-                } else {
-                    seatingArray[newRow][singleSeat] = "S";
+                    seatingArray[row][singleSeat] = "S";
                 }
-                System.out.print(seatingArray[newRow][singleSeat] + " ");
+                System.out.print(seatingArray[row][singleSeat] + " ");
             }
             System.out.println();
             rowCounter++;
         }
-
-
     }
 }
