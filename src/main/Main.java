@@ -13,33 +13,51 @@ public class Main {
         int numberOfSeats = userInput.nextInt();
 
         String[][] seatingArray = new String[rows][numberOfSeats];
+        showMenu(seatingArray, rows, numberOfSeats);
 
-        
-        System.out.println();
+    }
 
-        // This is for when the user chooses the seat in the cinema
-        System.out.println("Enter a row number:");
-        int chosenRow = userInput.nextInt();
-        System.out.println("Enter a seat number in that row:");
-        int chosenSeat = userInput.nextInt();
-        System.out.println();
+    public static void showMenu(String[][] seatingArray, int rows, int numberOfSeats) {
+        Scanner scanner = new Scanner(System.in);
+        // Main menu of the program
+        while (true) {
+            System.out.println("1. Show the seats");
+            System.out.println("2. Buy a ticket");
+            System.out.println("0. Exit");
 
+            int input = scanner.nextInt();
+            // Exits the program
+            if (input == 0) {
+                break;
+            }
 
-
-
+            switch (input) {
+                case 1:
+                    showCinema(seatingArray, numberOfSeats);
+                    break;
+                case 2:
+                    getTicketPrice(seatingArray, rows, numberOfSeats);
+                    System.out.println();
+                    break;
+                case 0:
+                    return;
+            }
+        }
     }
 
     public static void showCinema(String[][] seatingArray, int numberOfSeats) {
         int rowCounter = 1;
 
         System.out.println("Cinema:");
-        // Redraws the seating map
+        // Draws the header column of the seating map
         System.out.print("  ");
         for (int column = 1; column <= numberOfSeats; column++) {
             System.out.print(column + " ");
         }
         System.out.println();
 
+        // Draws the rest of the seating map
+        // It will print out "S" for available seats and "B" for taken seats
         for (int row = 0; row < seatingArray.length; row++) {
             System.out.print(rowCounter + " ");
             for (int singleSeat = 0; singleSeat < seatingArray[row].length; singleSeat++) {
@@ -56,7 +74,7 @@ public class Main {
 
     public static void getTicketPrice(String[][] seatingArray, int rows, int numberOfSeats) {
         Scanner scanner = new Scanner(System.in);
-
+        // Asks the user their chosen seat
         System.out.println("Enter a row number:");
         int chosenRow = scanner.nextInt();
         System.out.println("Enter a seat number in that row:");
